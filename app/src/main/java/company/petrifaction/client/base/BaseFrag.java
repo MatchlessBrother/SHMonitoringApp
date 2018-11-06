@@ -14,18 +14,18 @@ import android.view.WindowManager;
 import android.widget.ImageButton;
 import com.gyf.barlibrary.BarHide;
 import me.jessyan.autosize.AutoSize;
+import company.petrifaction.client.R;
 import android.graphics.BitmapFactory;
 import com.gyf.barlibrary.ImmersionBar;
-import company.petrifaction.client.R;
 import com.gyf.barlibrary.OnKeyboardListener;
 import android.graphics.drawable.ColorDrawable;
 import com.bumptech.glide.request.RequestOptions;
 import com.yuan.devlibrary._3Fragment.BaseFragment;
+import company.petrifaction.client.ui.base.BaseMvp_View;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.yuan.devlibrary._12_______Utils.PromptBoxUtils;
-import com.yuan.devlibrary._11___Widget.promptBox.BaseDialog;
-import company.petrifaction.client.ui.base.BaseMvp_View;
 import company.petrifaction.client.ui.base.BaseMvp_Presenter;
+import com.yuan.devlibrary._11___Widget.promptBox.BaseDialog;
 import com.yuan.devlibrary._11___Widget.promptBox.BaseProgressDialog;
 
 public abstract class BaseFrag extends BaseFragment implements BaseMvp_View,View.OnClickListener
