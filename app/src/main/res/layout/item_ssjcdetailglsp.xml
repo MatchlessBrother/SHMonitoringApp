@@ -14,10 +14,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_margin="12mm"
         android:textColor="@color/default_font_hint"
-        android:textSize="26sp" />
+        android:textSize="20sp" />
 
-    <ImageView
+    <android.support.v7.widget.AppCompatImageView
         android:id="@+id/item_ssjcdetailglsp_img"
         android:layout_width="90mm"
         android:layout_height="90mm"

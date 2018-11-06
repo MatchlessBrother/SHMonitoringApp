@@ -7,15 +7,15 @@ import android.widget.TextView;
 import android.view.LayoutInflater;
 import company.petrifaction.client.R;
 import android.support.v7.widget.RecyclerView;
+import company.petrifaction.client.base.BaseFrag;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import company.petrifaction.client.base.BaseFrag;
 import company.petrifaction.client.bean.bjcz.BjczPageInfo;
-import com.yuan.devlibrary._11___Widget.promptBox.BasePopupWindow;
 import company.petrifaction.client.adapter.bjcz.BjczAdapter;
 import company.petrifaction.client.ui.main.activity.view.MainAct;
 import company.petrifaction.client.ui.bjcz.activity.view.BjczAct;
+import com.yuan.devlibrary._11___Widget.promptBox.BasePopupWindow;
 import company.petrifaction.client.ui.bjcz.activity.view.BjczDetailAct;
 import company.petrifaction.client.ui.main.fragment.view_v.MainBjFrag_V;
 import company.petrifaction.client.ui.bjcz.activity.view.BjczHistroyAct;
@@ -28,6 +28,8 @@ public class MainBjFrag extends BaseFrag implements MainBjFrag_V,View.OnClickLis
     private RecyclerView mMainbjfragRecycler;
     private MainBjPresenter mMainBjPresenter;
     private SwipeRefreshLayout mMainbjfragSwiperefreshlayout;
+
+    public static final int StartBjczDetailAct = 0x0001;
 
     protected int setLayoutResID()
     {
@@ -101,7 +103,7 @@ public class MainBjFrag extends BaseFrag implements MainBjFrag_V,View.OnClickLis
                     {
                         Intent intent = new Intent(mActivity,BjczAct.class);
                         intent.putExtra("alarmid",((BjczPageInfo.ContentBean)adapter.getData().get(position)).getId() + "");
-                        startActivity(intent);
+                        startActivityForResult(intent,StartBjczDetailAct);
                         break;
                     }
                 }
@@ -194,6 +196,19 @@ public class MainBjFrag extends BaseFrag implements MainBjFrag_V,View.OnClickLis
         else
         {
             System.gc();
+        }
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch(requestCode)
+        {
+            case StartBjczDetailAct:
+            {
+                mMainBjPresenter.refreshDatas();
+                break;
+            }
         }
     }
 }

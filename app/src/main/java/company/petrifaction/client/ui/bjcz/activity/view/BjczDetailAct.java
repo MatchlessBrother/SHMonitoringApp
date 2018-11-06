@@ -13,12 +13,12 @@ import android.view.LayoutInflater;
 import android.webkit.WebViewClient;
 import company.petrifaction.client.R;
 import android.support.v7.widget.RecyclerView;
+import company.petrifaction.client.base.BaseAct;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v4.widget.SwipeRefreshLayout;
+import company.petrifaction.client.widget.EchartView;
 import android.support.v7.widget.LinearLayoutManager;
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import company.petrifaction.client.base.BaseAct;
-import company.petrifaction.client.widget.EchartView;
 import company.petrifaction.client.bean.bjcz.BjczDetailInfo;
 import company.petrifaction.client.adapter.bjcz.GlspAdapter;
 import company.petrifaction.client.adapter.bjcz.BjczDetailImgAdapter;
@@ -126,7 +126,10 @@ public class BjczDetailAct extends BaseAct implements BjczDetailAct_V,View.OnCli
                 intent.setAction("android.intent.action.VIEW");
                 Uri content_url = Uri.parse(null != mGlspAdapter.getData().get(position).getAccessUrl() ? mGlspAdapter.getData().get(position).getAccessUrl().trim() : "");
                 intent.setData(content_url);
-                startActivity(intent);
+                if(getPackageManager().queryIntentActivities(intent,0).size() > 0)
+                    startActivity(intent);
+                else
+                    showToast("未找到可以播放该视频的浏览器！");
             }
         });
 

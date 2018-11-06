@@ -2,8 +2,8 @@ package company.petrifaction.client.adapter.ssjc;
 
 import java.util.List;
 import android.content.Context;
-import android.support.annotation.Nullable;
 import company.petrifaction.client.R;
+import android.support.annotation.Nullable;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import company.petrifaction.client.bean.ssjc.JcDetailInfo;

@@ -516,7 +516,7 @@ public class MainJcFrag extends BaseFrag implements MainJcFrag_V,View.OnClickLis
                         if(null != childSensorsBean.getDataSyncStatus() && "1".equals(childSensorsBean.getDataSyncStatus().trim()))
                         {
                             jcDataAdapterInfoChild.setSjtxColorCode("#FF333333");
-                            sszBuffer.append(null != childSensorsBean.getRealtimeData() ? childSensorsBean.getRealtimeData().trim():"0");
+                            sszBuffer.append(null != childSensorsBean.getRealtimeData()  && !"".equals(childSensorsBean.getRealtimeData().trim()) ? childSensorsBean.getRealtimeData().trim():"--");
                             sszBuffer.append(null != childSensorsBean.getUnit() ? childSensorsBean.getUnit().trim() : "");
                         }
                         else
