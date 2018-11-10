@@ -143,19 +143,19 @@ public class BjczAct extends BasePhotoAct implements BjczAct_V,View.OnClickListe
 
     public void failOfUploadDatas()
     {
-        showToast("上传数据失败，请稍后再试！");
+        //showToast("上传数据失败，请稍后再试");
 
     }
 
     public void successOfUploadDatas()
     {
-        showToast("上传数据成功！");
+        showToast("上传数据成功");
         finish();
     }
 
     public void failOfUploadImgDatas()
     {
-        showToast("上传图片失败，请稍后重试！");
+        //showToast("上传图片失败，请稍后重试");
 
     }
 

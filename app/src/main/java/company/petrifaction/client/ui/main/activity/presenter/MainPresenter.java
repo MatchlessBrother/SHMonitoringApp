@@ -35,7 +35,7 @@ public class MainPresenter extends BaseMvp_Presenter<MainAct_V>
                             }
                             if(index == interceptorList.size() -1)
                             {
-                                getViewLayer().showToast("退出登录失败，请稍后再试，谢谢！");
+                                getViewLayer().showToast("退出登录失败，请稍后再试，谢谢");
                             }
                         }
                     }

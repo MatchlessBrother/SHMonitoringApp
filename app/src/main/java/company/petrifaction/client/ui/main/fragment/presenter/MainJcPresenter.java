@@ -20,7 +20,7 @@ public class MainJcPresenter extends BaseMvp_Presenter<MainJcFrag_V>
 
     }
 
-    public void getDatasInfo(Map conditionsMap,boolean isShowProgress)
+    public void getDatasInfo(Map conditionsMap,final boolean isShowProgress)
     {
         if(isAttachContextAndViewLayer())
         {
@@ -32,7 +32,7 @@ public class MainJcPresenter extends BaseMvp_Presenter<MainJcFrag_V>
                 {
                     if(isAttachContextAndViewLayer())
                     {
-                        getViewLayer().getSuccessOfDataInfos(Arrays.asList(jcDataInfo.getData()));
+                        getViewLayer().getSuccessOfDataInfos(isShowProgress,Arrays.asList(jcDataInfo.getData()));
                     }
                 }
 
@@ -41,7 +41,7 @@ public class MainJcPresenter extends BaseMvp_Presenter<MainJcFrag_V>
                     super.onFailure(msg);
                     if(isAttachContextAndViewLayer())
                     {
-                        getViewLayer().getFailOfDataInfos();
+                        getViewLayer().getFailOfDataInfos(isShowProgress);
                     }
                 }
 
@@ -50,7 +50,7 @@ public class MainJcPresenter extends BaseMvp_Presenter<MainJcFrag_V>
                     super.onError(msg);
                     if(isAttachContextAndViewLayer())
                     {
-                        getViewLayer().getFailOfDataInfos();
+                        getViewLayer().getFailOfDataInfos(isShowProgress);
                     }
                 }
             });

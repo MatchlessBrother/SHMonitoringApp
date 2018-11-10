@@ -318,7 +318,7 @@ public class MainHzFrag extends BaseFrag implements MainHzFrag_V,View.OnClickLis
                     mLsOptionsPickerView.show();
                 }
                 else
-                    showToast("没有可以选择的内容！");
+                    showToast("没有可以选择的内容");
                 break;
             }
             case R.id.mainhzfrag_conditions_zt_all:
@@ -329,7 +329,7 @@ public class MainHzFrag extends BaseFrag implements MainHzFrag_V,View.OnClickLis
                     mZtOptionsPickerView.show();
                 }
                 else
-                    showToast("没有可以选择的内容！");
+                    showToast("没有可以选择的内容");
                 break;
             }
             case R.id.mainhzfrag_conditions_endtime_all:

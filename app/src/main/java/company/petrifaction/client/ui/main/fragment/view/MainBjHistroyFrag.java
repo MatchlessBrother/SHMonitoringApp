@@ -249,6 +249,10 @@ public class MainBjHistroyFrag extends BaseFrag implements MainBjHistroyFrag_V,V
             {
                 Intent intent = new Intent(mActivity,BjczDetailAct.class);
                 intent.putExtra("alarmid",String.valueOf(mBjHistroyAdapter.getData().get(position).getId()));
+                if(mBjHistroyAdapter.getData().get(position).getHandleStatus() == 1)
+                    intent.putExtra("isprocessed",false);
+                else
+                    intent.putExtra("isprocessed",true);
                 startActivity(intent);
             }
         });
@@ -290,7 +294,7 @@ public class MainBjHistroyFrag extends BaseFrag implements MainBjHistroyFrag_V,V
                     mLsOptionsPickerView.show();
                 }
                 else
-                    showToast("没有可以选择的内容！");
+                    showToast("没有可以选择的内容");
                 break;
             }
             case R.id.mainbjhistroyfrag_conditions_zt_all:
@@ -301,7 +305,7 @@ public class MainBjHistroyFrag extends BaseFrag implements MainBjHistroyFrag_V,V
                     mZtOptionsPickerView.show();
                 }
                 else
-                    showToast("没有可以选择的内容！");
+                    showToast("没有可以选择的内容");
                 break;
             }
             case R.id.mainbjhistroyfrag_conditions_endtime_all:

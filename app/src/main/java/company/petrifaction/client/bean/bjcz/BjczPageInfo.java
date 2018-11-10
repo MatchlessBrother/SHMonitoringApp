@@ -109,7 +109,7 @@ public class BjczPageInfo implements Parcelable
         private String parentCategoryName;
         private int alarmLevelId;
         private String alarmLevelName;
-        private long alarmValue;
+        private String alarmValue;
         private String realTimeData;
         private String alarmStartTime;
         private String alarmEndTime;
@@ -240,11 +240,11 @@ public class BjczPageInfo implements Parcelable
             this.alarmLevelName = alarmLevelName;
         }
 
-        public long getAlarmValue() {
+        public String getAlarmValue() {
             return alarmValue;
         }
 
-        public void setAlarmValue(long alarmValue) {
+        public void setAlarmValue(String alarmValue) {
             this.alarmValue = alarmValue;
         }
 
@@ -405,7 +405,7 @@ public class BjczPageInfo implements Parcelable
             dest.writeString(this.parentCategoryName);
             dest.writeInt(this.alarmLevelId);
             dest.writeString(this.alarmLevelName);
-            dest.writeLong(this.alarmValue);
+            dest.writeString(this.alarmValue);
             dest.writeString(this.realTimeData);
             dest.writeString(this.alarmStartTime);
             dest.writeString(this.alarmEndTime);
@@ -443,7 +443,7 @@ public class BjczPageInfo implements Parcelable
             this.parentCategoryName = in.readString();
             this.alarmLevelId = in.readInt();
             this.alarmLevelName = in.readString();
-            this.alarmValue = in.readLong();
+            this.alarmValue = in.readString();
             this.realTimeData = in.readString();
             this.alarmStartTime = in.readString();
             this.alarmEndTime = in.readString();

@@ -41,7 +41,7 @@ public class SignInPresenter extends BaseMvp_Presenter<SignInAct_V>
                             }
                             if(index == interceptorList.size() -1)
                             {
-                                getViewLayer().showToast("登录失败，请稍后再试，谢谢！");
+                                getViewLayer().showToast("登录失败，请稍后再试，谢谢");
                             }
                         }
                     }

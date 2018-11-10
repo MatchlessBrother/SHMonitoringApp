@@ -29,6 +29,7 @@ public class BjczDetailAct extends BaseAct implements BjczDetailAct_V,View.OnCli
 {
     private String mAlarmId;
     private String mBaseImgPath;
+    private boolean mIsProcessed;
     private TextView mBjczdetailCzr;
     private TextView mBjczdetailFzr;
     private TextView mBjczdetailSsz;
@@ -55,6 +56,18 @@ public class BjczDetailAct extends BaseAct implements BjczDetailAct_V,View.OnCli
     private BjczDetailPresenter mBjczDetailPresenter;
     private BjczDetailImgAdapter mBjczDetailImgAdapter;
     private SwipeRefreshLayout mBjczdetailSwiperefreshlayout;
+    /*******************************************************/
+    private View mBjczdetailCzrLine;
+    private LinearLayout mBjczdetailCzrAll;
+    private View mBjczdetailCzrlxdhLine;
+    private LinearLayout mBjczdetailCzrlxdhAll;
+    private View mBjczdetailCzrbgdhLine;
+    private LinearLayout mBjczdetailCzrbgdhAll;
+    private View mBjczdetailCzsmLine;
+    private LinearLayout mBjczdetailCzsmAll;
+    private View mBjczdetailCztpLine;
+    private LinearLayout mBjczdetailCztpAll;
+    /*******************************************************/
 
     protected int setLayoutResID()
     {
@@ -67,6 +80,7 @@ public class BjczDetailAct extends BaseAct implements BjczDetailAct_V,View.OnCli
         setTitleContent("详情");
         mAlarmId = getIntent().getStringExtra("alarmid");
         mBaseImgPath = "http://git.yunfanwulian.com:20001";
+        mIsProcessed = getIntent().getBooleanExtra("isprocessed",false);
         mBjczdetailCzr = (TextView) rootView.findViewById(R.id.bjczdetail_czr);
         mBjczdetailBjz = (TextView) rootView.findViewById(R.id.bjczdetail_bjz);
         mBjczdetailSsz = (TextView) rootView.findViewById(R.id.bjczdetail_ssz);
@@ -95,6 +109,17 @@ public class BjczDetailAct extends BaseAct implements BjczDetailAct_V,View.OnCli
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         mBjczdetailGlsp.setLayoutManager(linearLayoutManager);
         mBjczdetailGlsp.setAdapter(mGlspAdapter);
+        /******************************************************************************************/
+        mBjczdetailCzrLine = (View)rootView.findViewById(R.id.bjczdetail_czr_line);
+        mBjczdetailCzrAll = (LinearLayout)rootView.findViewById(R.id.bjczdetail_czr_all);
+        mBjczdetailCzrlxdhLine = (View)rootView.findViewById(R.id.bjczdetail_czrlxdh_line);
+        mBjczdetailCzrlxdhAll = (LinearLayout)rootView.findViewById(R.id.bjczdetail_czrlxdh_all);
+        mBjczdetailCzrbgdhLine = (View)rootView.findViewById(R.id.bjczdetail_czrbgdh_line);
+        mBjczdetailCzrbgdhAll = (LinearLayout)rootView.findViewById(R.id.bjczdetail_czrbgdh_all);
+        mBjczdetailCzsmLine = (View)rootView.findViewById(R.id.bjczdetail_czsm_line);
+        mBjczdetailCzsmAll = (LinearLayout)rootView.findViewById(R.id.bjczdetail_czsm_all);
+        mBjczdetailCztpLine = (View)rootView.findViewById(R.id.bjczdetail_cztp_line);
+        mBjczdetailCztpAll = (LinearLayout)rootView.findViewById(R.id.bjczdetail_cztp_all);
         /******************************************************************************************/
         mBjczDetailImgAdapter =  new BjczDetailImgAdapter(this,new ArrayList<BjczDetailInfo.HandleImagesBean>());
         GridLayoutManager gridLayoutManager = new GridLayoutManager(mActivity,3);
@@ -129,7 +154,7 @@ public class BjczDetailAct extends BaseAct implements BjczDetailAct_V,View.OnCli
                 if(getPackageManager().queryIntentActivities(intent,0).size() > 0)
                     startActivity(intent);
                 else
-                    showToast("未找到可以播放该视频的浏览器！");
+                    showToast("未找到可以播放该视频的浏览器");
             }
         });
 
@@ -147,7 +172,32 @@ public class BjczDetailAct extends BaseAct implements BjczDetailAct_V,View.OnCli
     protected void initLogic()
     {
         mBjczDetailPresenter.getDatas(mAlarmId);
-
+        if(mIsProcessed)//已处置
+        {
+            mBjczdetailCzrLine.setVisibility(View.VISIBLE);
+            mBjczdetailCzrAll.setVisibility(View.VISIBLE);
+            mBjczdetailCzrlxdhLine.setVisibility(View.VISIBLE);
+            mBjczdetailCzrlxdhAll.setVisibility(View.VISIBLE);
+            mBjczdetailCzrbgdhLine.setVisibility(View.VISIBLE);
+            mBjczdetailCzrbgdhAll.setVisibility(View.VISIBLE);
+            mBjczdetailCzsmLine.setVisibility(View.VISIBLE);
+            mBjczdetailCzsmAll.setVisibility(View.VISIBLE);
+            mBjczdetailCztpLine.setVisibility(View.VISIBLE);
+            mBjczdetailCztpAll.setVisibility(View.VISIBLE);
+        }
+        else//未处置
+        {
+            mBjczdetailCzrLine.setVisibility(View.GONE);
+            mBjczdetailCzrAll.setVisibility(View.GONE);
+            mBjczdetailCzrlxdhLine.setVisibility(View.GONE);
+            mBjczdetailCzrlxdhAll.setVisibility(View.GONE);
+            mBjczdetailCzrbgdhLine.setVisibility(View.GONE);
+            mBjczdetailCzrbgdhAll.setVisibility(View.GONE);
+            mBjczdetailCzsmLine.setVisibility(View.GONE);
+            mBjczdetailCzsmAll.setVisibility(View.GONE);
+            mBjczdetailCztpLine.setVisibility(View.GONE);
+            mBjczdetailCztpAll.setVisibility(View.GONE);
+        }
     }
 
     public void failOfGetDatas()
@@ -167,7 +217,7 @@ public class BjczDetailAct extends BaseAct implements BjczDetailAct_V,View.OnCli
             ssz = ssz.replaceAll("0+?$", "");
             ssz = ssz.replaceAll("[.]$", "");
         }
-        mBjczdetailSsz.setText(!"".equals(ssz.trim()) ? ssz : (null != bjczDetailInfo.getRealtimeData() ? bjczDetailInfo.getRealtimeData().trim() : ""));
+        mBjczdetailSsz.setText(!"".equals(ssz.trim()) ? ssz + (null != bjczDetailInfo.getUnit() ? bjczDetailInfo.getUnit().trim() : ""): (null != bjczDetailInfo.getRealtimeData() ? bjczDetailInfo.getRealtimeData().trim() + (null != bjczDetailInfo.getUnit() ? bjczDetailInfo.getUnit().trim() : "") : ""));
         String bjz = "";
         if(null != bjczDetailInfo.getAlarmValue() && bjczDetailInfo.getAlarmValue().trim().indexOf(".") > 0)
         {
@@ -175,25 +225,25 @@ public class BjczDetailAct extends BaseAct implements BjczDetailAct_V,View.OnCli
             bjz = bjz.replaceAll("0+?$", "");
             bjz = bjz.replaceAll("[.]$", "");
         }
-        mBjczdetailBjz.setText(!"".equals(bjz.trim()) ? bjz : (null != bjczDetailInfo.getAlarmValue() ? bjczDetailInfo.getAlarmValue().trim() : ""));
+        mBjczdetailBjz.setText(!"".equals(bjz.trim()) ? bjz + (null != bjczDetailInfo.getUnit() ? bjczDetailInfo.getUnit().trim() : "") : (null != bjczDetailInfo.getAlarmValue() ? bjczDetailInfo.getAlarmValue().trim() + (null != bjczDetailInfo.getUnit() ? bjczDetailInfo.getUnit().trim() : "") : ""));
         mBjczdetailArea.setText(null != bjczDetailInfo.getDeviceAreaName() ? bjczDetailInfo.getDeviceAreaName().trim() : "");
         mBjczdetailLsgj.setText(null != bjczDetailInfo.getAlarmTotalNumber() ? bjczDetailInfo.getAlarmTotalNumber().trim() : "");
         StringBuffer stringBuffer = new StringBuffer();
         stringBuffer.append(null != bjczDetailInfo.getParentCategoryName() ? bjczDetailInfo.getParentCategoryName().trim(): "");
-        stringBuffer.append(null != bjczDetailInfo.getMedium() && !"".equals( bjczDetailInfo.getMedium().trim()) ? "-" + bjczDetailInfo.getMedium().trim(): "");
+        //stringBuffer.append(null != bjczDetailInfo.getMedium() && !"".equals( bjczDetailInfo.getMedium().trim()) ? "-" + bjczDetailInfo.getMedium().trim(): "");
         mBjczdetailType.setText(stringBuffer.toString());
         mBjczdetailCzsm.setText(null != bjczDetailInfo.getHandleDescription() ? bjczDetailInfo.getHandleDescription().trim() : "");
         mBjczdetailSskbh.setText(null != bjczDetailInfo.getRealtimeDbPositionId() ? bjczDetailInfo.getRealtimeDbPositionId().trim() : "");
         mBjczdetailPosition.setText(null != bjczDetailInfo.getAddress() ? bjczDetailInfo.getAddress().trim() : "");
         mBjczdetailDepartment.setText(null != bjczDetailInfo.getDepartmentName() ? bjczDetailInfo.getDepartmentName().trim() : "");
         mBjczdetailFzr.setText(null != bjczDetailInfo.getPeopleName() ? bjczDetailInfo.getPeopleName().trim() : "");
-        mBjczdetailLxdh.setText(null != bjczDetailInfo.getPeopleTelephone() ? bjczDetailInfo.getPeopleTelephone().trim() : "");
+        mBjczdetailLxdh.setText(null != bjczDetailInfo.getTelephone() ? bjczDetailInfo.getTelephone().trim() : "");
         mBjczdetailBgdh.setText(null != bjczDetailInfo.getPeopleWorkTelephone() ? bjczDetailInfo.getPeopleWorkTelephone().trim() : "");
         mBjczdetailCzr.setText(null != bjczDetailInfo.getHandlePeopleName() ? bjczDetailInfo.getHandlePeopleName().trim() : "");
         mBjczdetailCzrlxdh.setText(null != bjczDetailInfo.getHandlePeopleTelephone() ? bjczDetailInfo.getHandlePeopleTelephone().trim() : "");
         mBjczdetailCzrbgdh.setText(null != bjczDetailInfo.getHandlePeopleWorkTelephone() ? bjczDetailInfo.getHandlePeopleWorkTelephone().trim() : "");
         mBjczdetailSjtx.setText(null != bjczDetailInfo.getDataSyncStatusDescription() ? bjczDetailInfo.getDataSyncStatusDescription().trim() : "");
-        mBjczdetailSjtx.setTextColor((null != bjczDetailInfo.getDataSyncStatus() && "1".equals(bjczDetailInfo.getDataSyncStatus().trim())) ? Color.argb(255,0,255,0) : Color.argb(255,255,0,0));
+        mBjczdetailSjtx.setTextColor((null != bjczDetailInfo.getDataSyncStatus() && "1".equals(bjczDetailInfo.getDataSyncStatus().trim())) ? Color.argb(255,0,153,0) : Color.argb(255,255,0,0));
         /******************************************************************************************/
         mBjczdetailKeyvalue.removeAllViews();
         LayoutInflater inflater = LayoutInflater.from(this);

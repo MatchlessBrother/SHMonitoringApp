@@ -393,6 +393,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1mm"
+                    android:visibility="gone"
                     android:background="@color/default_divide_line" />
 
                 <LinearLayout
@@ -404,7 +405,8 @@
                     android:paddingBottom="20mm"
                     android:paddingLeft="20mm"
                     android:paddingRight="20mm"
-                    android:paddingTop="20mm">
+                    android:paddingTop="20mm"
+                    android:visibility="gone">
 
                     <TextView
                         android:layout_width="0mm"
@@ -465,6 +467,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1mm"
+                    android:visibility="gone"
                     android:background="@color/default_divide_line" />
 
                 <LinearLayout
@@ -476,7 +479,8 @@
                     android:paddingBottom="20mm"
                     android:paddingLeft="20mm"
                     android:paddingRight="20mm"
-                    android:paddingTop="20mm">
+                    android:paddingTop="20mm"
+                    android:visibility="gone">
 
                     <TextView
                         android:layout_width="0mm"
@@ -535,11 +539,13 @@
                 </LinearLayout>
 
                 <View
+                    android:id="@+id/bjczdetail_czr_line"
                     android:layout_width="match_parent"
                     android:layout_height="1mm"
                     android:background="@color/default_divide_line" />
 
                 <LinearLayout
+                    android:id="@+id/bjczdetail_czr_all"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
@@ -571,11 +577,13 @@
                 </LinearLayout>
 
                 <View
+                    android:id="@+id/bjczdetail_czrlxdh_line"
                     android:layout_width="match_parent"
                     android:layout_height="1mm"
                     android:background="@color/default_divide_line" />
 
                 <LinearLayout
+                    android:id="@+id/bjczdetail_czrlxdh_all"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
@@ -607,11 +615,13 @@
                 </LinearLayout>
 
                 <View
+                    android:id="@+id/bjczdetail_czrbgdh_line"
                     android:layout_width="match_parent"
                     android:layout_height="1mm"
                     android:background="@color/default_divide_line" />
 
                 <LinearLayout
+                    android:id="@+id/bjczdetail_czrbgdh_all"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
@@ -646,6 +656,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1mm"
                     android:layout_marginTop="20mm"
+                    android:visibility="gone"
                     android:background="@color/default_divide_line" />
 
                 <LinearLayout
@@ -656,7 +667,8 @@
                     android:paddingBottom="20mm"
                     android:paddingLeft="20mm"
                     android:paddingRight="20mm"
-                    android:paddingTop="20mm">
+                    android:paddingTop="20mm"
+                    android:visibility="gone">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -675,6 +687,82 @@
                         android:layout_marginTop="30mm"
                         android:fadingEdgeLength="0mm"
                         android:requiresFadingEdge="horizontal"
+                        android:scrollbars="none" />
+
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/bjczdetail_czsm_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="1mm"
+                    android:layout_marginTop="20mm"
+                    android:background="@color/default_divide_line" />
+
+                <LinearLayout
+                    android:id="@+id/bjczdetail_czsm_all"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:paddingBottom="20mm"
+                    android:paddingLeft="20mm"
+                    android:paddingRight="20mm"
+                    android:paddingTop="20mm">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="left|center_vertical"
+                        android:singleLine="true"
+                        android:text="处置说明"
+                        android:textColor="@color/default_font_hint"
+                        android:textSize="28sp" />
+
+                    <TextView
+                        android:id="@+id/bjczdetail_czsm"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30mm"
+                        android:gravity="left|center_vertical"
+                        android:textColor="@color/default_font_gray"
+                        android:textSize="28sp" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/bjczdetail_cztp_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="1mm"
+                    android:layout_marginTop="20mm"
+                    android:background="@color/default_divide_line" />
+
+                <LinearLayout
+                    android:id="@+id/bjczdetail_cztp_all"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:paddingBottom="20mm"
+                    android:paddingLeft="20mm"
+                    android:paddingRight="20mm"
+                    android:paddingTop="20mm">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="left|center_vertical"
+                        android:singleLine="true"
+                        android:text="处置图片"
+                        android:textColor="@color/default_font_hint"
+                        android:textSize="28sp" />
+
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/bjczdetail_cztp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30mm"
+                        android:fadingEdgeLength="0mm"
+                        android:requiresFadingEdge="vertical"
                         android:scrollbars="none" />
 
                 </LinearLayout>
@@ -708,78 +796,6 @@
                         android:id="@+id/bjczdetail_lsbjqxt"
                         android:layout_width="match_parent"
                         android:layout_height="400mm" />
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1mm"
-                    android:layout_marginTop="20mm"
-                    android:background="@color/default_divide_line" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:orientation="vertical"
-                    android:paddingBottom="20mm"
-                    android:paddingLeft="20mm"
-                    android:paddingRight="20mm"
-                    android:paddingTop="20mm">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="left|center_vertical"
-                        android:singleLine="true"
-                        android:text="处置说明"
-                        android:textColor="@color/default_font_hint"
-                        android:textSize="28sp" />
-
-                    <TextView
-                        android:id="@+id/bjczdetail_czsm"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="30mm"
-                        android:gravity="left|center_vertical"
-                        android:textColor="@color/default_font_gray"
-                        android:textSize="28sp" />
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1mm"
-                    android:layout_marginTop="20mm"
-                    android:background="@color/default_divide_line" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:orientation="vertical"
-                    android:paddingBottom="20mm"
-                    android:paddingLeft="20mm"
-                    android:paddingRight="20mm"
-                    android:paddingTop="20mm">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="left|center_vertical"
-                        android:singleLine="true"
-                        android:text="处置图片"
-                        android:textColor="@color/default_font_hint"
-                        android:textSize="28sp" />
-
-
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/bjczdetail_cztp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="30mm"
-                        android:fadingEdgeLength="0mm"
-                        android:requiresFadingEdge="vertical"
-                        android:scrollbars="none" />
-
                 </LinearLayout>
 
                 <View

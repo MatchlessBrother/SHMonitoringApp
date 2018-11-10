@@ -85,6 +85,7 @@ public class MainBjFrag extends BaseFrag implements MainBjFrag_V,View.OnClickLis
             {
                Intent intent = new Intent(mActivity,BjczDetailAct.class);
                intent.putExtra("alarmid",String.valueOf(mBjczAdapter.getData().get(position).getId()));
+               intent.putExtra("isprocessed",false);
                startActivity(intent);
             }
         });

@@ -2,10 +2,11 @@ package company.petrifaction.client.adapter.lsbj;
 
 import java.util.Date;
 import java.util.List;
+import java.math.BigDecimal;
 import android.content.Context;
 import java.text.SimpleDateFormat;
-import android.support.annotation.Nullable;
 import company.petrifaction.client.R;
+import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -31,7 +32,7 @@ public class BjHistroyAdapter extends BaseQuickAdapter<BjHistroyPageInfo.Content
             case 2:helper.setTextColor(R.id.item_mainbjhistroyfragment_status,ContextCompat.getColor(mContext,R.color.colorPrimary));break;
         }
         helper.setText(R.id.item_mainbjhistroyfragment_fourline_right,bjHistroyInfo.getAlarmNumber() + "");
-        helper.setText(R.id.item_mainbjhistroyfragment_fourline_left,bjHistroyInfo.getAlarmValue() + bjHistroyInfo.getUnit().trim());
+        helper.setText(R.id.item_mainbjhistroyfragment_fourline_left,new BigDecimal(bjHistroyInfo.getAlarmValue()).stripTrailingZeros().toPlainString() + bjHistroyInfo.getUnit().trim());
         helper.setText(R.id.item_mainbjhistroyfragment_twoline_right,null != bjHistroyInfo.getAddress() && !"".equals(bjHistroyInfo.getAddress().trim()) ? bjHistroyInfo.getAddress().trim() : "");
         helper.setText(R.id.item_mainbjhistroyfragment_twoline_left,null != bjHistroyInfo.getSensorName() && !"".equals(bjHistroyInfo.getSensorName().trim()) ? bjHistroyInfo.getSensorName().trim() : "");
         helper.setText(R.id.item_mainbjhistroyfragment_oneline_left,null != bjHistroyInfo.getDepartmentName() && !"".equals(bjHistroyInfo.getDepartmentName().trim()) ? bjHistroyInfo.getDepartmentName().trim() : "");

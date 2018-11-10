@@ -357,6 +357,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1mm"
+                    android:visibility="gone"
                     android:background="@color/default_divide_line" />
 
                 <LinearLayout
@@ -368,7 +369,8 @@
                     android:paddingBottom="20mm"
                     android:paddingLeft="20mm"
                     android:paddingRight="20mm"
-                    android:paddingTop="20mm">
+                    android:paddingTop="20mm"
+                    android:visibility="gone">
 
                     <TextView
                         android:layout_width="0mm"
@@ -429,6 +431,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1mm"
+                    android:visibility="gone"
                     android:background="@color/default_divide_line" />
 
                 <LinearLayout
@@ -440,7 +443,8 @@
                     android:paddingBottom="20mm"
                     android:paddingLeft="20mm"
                     android:paddingRight="20mm"
-                    android:paddingTop="20mm">
+                    android:paddingTop="20mm"
+                    android:visibility="gone">
 
                     <TextView
                         android:layout_width="0mm"
@@ -502,6 +506,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1mm"
                     android:layout_marginTop="20mm"
+                    android:visibility="gone"
                     android:background="@color/default_divide_line" />
 
                 <LinearLayout
@@ -512,7 +517,8 @@
                     android:paddingBottom="20mm"
                     android:paddingLeft="20mm"
                     android:paddingRight="20mm"
-                    android:paddingTop="20mm">
+                    android:paddingTop="20mm"
+                    android:visibility="gone">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -532,7 +538,6 @@
                         android:fadingEdgeLength="0mm"
                         android:requiresFadingEdge="horizontal"
                         android:scrollbars="none" />
-
                 </LinearLayout>
 
                 <View

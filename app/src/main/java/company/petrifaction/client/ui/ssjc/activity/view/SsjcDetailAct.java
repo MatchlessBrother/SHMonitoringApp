@@ -104,7 +104,7 @@ public class SsjcDetailAct extends BaseAct implements SsjcDetailAct_V,View.OnCli
                 if(getPackageManager().queryIntentActivities(intent,0).size() > 0)
                     startActivity(intent);
                 else
-                    showToast("未找到可以播放该视频的浏览器！");
+                    showToast("未找到可以播放该视频的浏览器");
             }
         });
     }
@@ -129,7 +129,7 @@ public class SsjcDetailAct extends BaseAct implements SsjcDetailAct_V,View.OnCli
         mSsjcdetailPosition.setText(null != jcDetailInfo.getAddress() ? jcDetailInfo.getAddress().trim() : "");
         StringBuffer stringBuffer = new StringBuffer();
         stringBuffer.append(null != jcDetailInfo.getCategoryParentName() ? jcDetailInfo.getCategoryParentName().trim(): "");
-        stringBuffer.append(null != jcDetailInfo.getMedium() && !"".equals( jcDetailInfo.getMedium().trim()) ? "-" + jcDetailInfo.getMedium().trim(): "");
+        //stringBuffer.append(null != jcDetailInfo.getMedium() && !"".equals( jcDetailInfo.getMedium().trim()) ? "-" + jcDetailInfo.getMedium().trim(): "");
         mSsjcdetailType.setText(stringBuffer.toString());
         String ssz = "";
         if(null != jcDetailInfo.getRealtimeData() && jcDetailInfo.getRealtimeData().trim().indexOf(".") > 0)
@@ -138,15 +138,15 @@ public class SsjcDetailAct extends BaseAct implements SsjcDetailAct_V,View.OnCli
             ssz = ssz.replaceAll("0+?$", "");
             ssz = ssz.replaceAll("[.]$", "");
         }
-        mSsjcdetailSsz.setText(!"".equals(ssz.trim()) ? ssz : (null != jcDetailInfo.getRealtimeData() ? jcDetailInfo.getRealtimeData().trim() : ""));
+        mSsjcdetailSsz.setText(!"".equals(ssz.trim()) ? ssz + (null != jcDetailInfo.getUnit() ? jcDetailInfo.getUnit().trim() : ""): (null != jcDetailInfo.getRealtimeData() ? jcDetailInfo.getRealtimeData().trim() + (null != jcDetailInfo.getUnit() ? jcDetailInfo.getUnit().trim() : "") : ""));
         mSsjcdetailLsgj.setText(null != jcDetailInfo.getAlarmTotalNumber() ? jcDetailInfo.getAlarmTotalNumber().trim() : "");
         mSsjcdetailLxgj.setText(null != jcDetailInfo.getAlarmNumber() ? jcDetailInfo.getAlarmNumber().trim() : "");
         mSsjcdetailSskbh.setText(null != jcDetailInfo.getRealtimeDbPositionId() ? jcDetailInfo.getRealtimeDbPositionId().trim() : "");
         mSsjcdetailFzr.setText(null != jcDetailInfo.getPeopleName() ? jcDetailInfo.getPeopleName().trim() : "");
-        mSsjcdetailLxdh.setText(null != jcDetailInfo.getPeopleTelephone() ? jcDetailInfo.getPeopleTelephone().trim() : "");
+        mSsjcdetailLxdh.setText(null != jcDetailInfo.getTelephone() ? jcDetailInfo.getTelephone().trim() : "");
         mSsjcdetailBgdh.setText(null != jcDetailInfo.getPeopleWorkTelephone() ? jcDetailInfo.getPeopleWorkTelephone().trim() : "");
         mSsjcdetailSjtx.setText(null != jcDetailInfo.getDataSyncStatusName() ? jcDetailInfo.getDataSyncStatusName().trim() : "");
-        mSsjcdetailSjtx.setTextColor((null != jcDetailInfo.getDataSyncStatus() && "1".equals(jcDetailInfo.getDataSyncStatus().trim())) ? Color.argb(255,0,255,0) : Color.argb(255,255,0,0));
+        mSsjcdetailSjtx.setTextColor((null != jcDetailInfo.getDataSyncStatus() && "1".equals(jcDetailInfo.getDataSyncStatus().trim())) ? Color.argb(255,0,153,0) : Color.argb(255,255,0,0));
         /******************************************************************************************/
         mSsjcdetailKeyvalue.removeAllViews();
         LayoutInflater inflater = LayoutInflater.from(this);

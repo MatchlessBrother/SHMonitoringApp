@@ -2,10 +2,11 @@ package company.petrifaction.client.adapter.bjcz;
 
 import java.util.Date;
 import java.util.List;
+import java.math.BigDecimal;
 import android.content.Context;
 import java.text.SimpleDateFormat;
-import android.support.annotation.Nullable;
 import company.petrifaction.client.R;
+import android.support.annotation.Nullable;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import company.petrifaction.client.bean.bjcz.BjczHistroyPageInfo;
@@ -25,7 +26,7 @@ public class BjczHistroyAdapter extends BaseQuickAdapter<BjczHistroyPageInfo.Con
     protected void convert(BaseViewHolder helper,BjczHistroyPageInfo.ContentBean bjczHistroyInfo)
     {
         helper.setText(R.id.item_bjczhistroy_fourline_right,bjczHistroyInfo.getAlarmNumber() + "");
-        helper.setText(R.id.item_bjczhistroy_fourline_left,bjczHistroyInfo.getAlarmValue() + bjczHistroyInfo.getUnit().trim());
+        helper.setText(R.id.item_bjczhistroy_fourline_left,new BigDecimal(bjczHistroyInfo.getAlarmValue()).stripTrailingZeros().toPlainString() + bjczHistroyInfo.getUnit().trim());
         helper.setText(R.id.item_bjczhistroy_twoline_right,null != bjczHistroyInfo.getAddress() && !"".equals(bjczHistroyInfo.getAddress().trim()) ? bjczHistroyInfo.getAddress().trim() : "");
         helper.setText(R.id.item_bjczhistroy_twoline_left,null != bjczHistroyInfo.getSensorName() && !"".equals(bjczHistroyInfo.getSensorName().trim()) ? bjczHistroyInfo.getSensorName().trim() : "");
         helper.setText(R.id.item_bjczhistroy_oneline_left,null != bjczHistroyInfo.getDepartmentName() && !"".equals(bjczHistroyInfo.getDepartmentName().trim()) ? bjczHistroyInfo.getDepartmentName().trim() : "");

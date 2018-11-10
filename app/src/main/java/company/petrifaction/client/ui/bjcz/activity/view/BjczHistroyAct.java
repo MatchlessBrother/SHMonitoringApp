@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import android.content.Intent;
 import company.petrifaction.client.R;
 import android.support.v7.widget.RecyclerView;
+import company.petrifaction.client.base.BaseAct;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import company.petrifaction.client.base.BaseAct;
 import company.petrifaction.client.bean.bjcz.BjczHistroyPageInfo;
 import company.petrifaction.client.adapter.bjcz.BjczHistroyAdapter;
 import company.petrifaction.client.ui.bjcz.activity.view_v.BjczHistroyAct_V;
@@ -71,6 +71,7 @@ public class BjczHistroyAct extends BaseAct implements BjczHistroyAct_V,View.OnC
             public void onItemClick(BaseQuickAdapter adapter, View view, int position)
             {
                 Intent intent = new Intent(BjczHistroyAct.this,BjczDetailAct.class);
+                intent.putExtra("isprocessed",true);
                 intent.putExtra("alarmid",String.valueOf(mBjczHistroyAdapter.getData().get(position).getId()));
                 startActivity(intent);
             }

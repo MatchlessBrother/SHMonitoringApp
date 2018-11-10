@@ -60,6 +60,7 @@ public class BjczDetailInfo implements Parcelable
     private String address;
     private String medium;
     private String unit;
+    private String telephone;
     private String cameraNumber;
     private String deviceAreaId;
     private String deviceAreaName;
@@ -95,6 +96,14 @@ public class BjczDetailInfo implements Parcelable
     private List<CamerasBean> cameras;
     private List<MonthAlramRecordStatBean> monthAlramRecordStat;
     private List<HandleImagesBean> handleImages;
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
 
     public String getId() {
         return id;
@@ -824,6 +833,7 @@ public class BjczDetailInfo implements Parcelable
         dest.writeString(this.address);
         dest.writeString(this.medium);
         dest.writeString(this.unit);
+        dest.writeString(this.telephone);
         dest.writeString(this.cameraNumber);
         dest.writeString(this.deviceAreaId);
         dest.writeString(this.deviceAreaName);
@@ -873,6 +883,7 @@ public class BjczDetailInfo implements Parcelable
         this.address = in.readString();
         this.medium = in.readString();
         this.unit = in.readString();
+        this.telephone = in.readString();
         this.cameraNumber = in.readString();
         this.deviceAreaId = in.readString();
         this.deviceAreaName = in.readString();

@@ -57,17 +57,17 @@ public class ModifyPasswordAct extends BaseAct implements ModifyPasswordAct_V,Vi
         super.onTitleMoreFontClick();
         if(StringUtils.isEmpty(mModifypasswordOldpassword.getText().toString().trim()))
         {
-            showToast("原始密码不能为空，请重新输入！");
+            showToast("原始密码不能为空，请重新输入");
             return;
         }
         else if(StringUtils.isEmpty(mModifypasswordNewpassword1.getText().toString().trim()) || StringUtils.isEmpty(mModifypasswordNewpassword2.getText().toString().trim()))
         {
-            showToast("新密码不能为空，请重新输入！");
+            showToast("新密码不能为空，请重新输入");
             return;
         }
         else if(!mModifypasswordNewpassword1.getText().toString().trim().equals(mModifypasswordNewpassword2.getText().toString().trim()))
         {
-            showToast("输入的两次新密码不相同，请重新输入！");
+            showToast("输入的两次新密码不相同，请重新输入");
             return;
         }
         mModifyPasswordPresenter.modifyPassword(mModifypasswordOldpassword.getText().toString().trim(),mModifypasswordNewpassword2.getText().toString().trim());
@@ -76,7 +76,8 @@ public class ModifyPasswordAct extends BaseAct implements ModifyPasswordAct_V,Vi
     public void successOfModifyPassword()
     {
         /****************退出当前账号****************/
-        showToast("修改密码成功！");
+        finish();
+        showToast("修改密码成功");
         //SignInAct.quitCrrentAccount(this,"修改密码成功！请重新登陆！");
     }
 }

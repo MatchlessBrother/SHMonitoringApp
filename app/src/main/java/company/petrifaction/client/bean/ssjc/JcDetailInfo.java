@@ -66,11 +66,20 @@ public class JcDetailInfo implements Parcelable
     private String alarmTotalNumber;
     private String peopleId;
     private String peopleName;
+    private String telephone;
     private String peopleTelephone;
     private String peopleWorkTelephone;
     private List<SettingsBean> settings;
     private List<CamerasBean> cameras;
     private List<MonthAlramRecordStatBean> monthAlramRecordStat;
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
 
     public String getId() {
         return id;
@@ -677,6 +686,7 @@ public class JcDetailInfo implements Parcelable
         dest.writeString(this.alarmTotalNumber);
         dest.writeString(this.peopleId);
         dest.writeString(this.peopleName);
+        dest.writeString(this.telephone);
         dest.writeString(this.peopleTelephone);
         dest.writeString(this.peopleWorkTelephone);
         dest.writeTypedList(this.settings);
@@ -714,6 +724,7 @@ public class JcDetailInfo implements Parcelable
         this.alarmTotalNumber = in.readString();
         this.peopleId = in.readString();
         this.peopleName = in.readString();
+        this.telephone = in.readString();
         this.peopleTelephone = in.readString();
         this.peopleWorkTelephone = in.readString();
         this.settings = in.createTypedArrayList(SettingsBean.CREATOR);

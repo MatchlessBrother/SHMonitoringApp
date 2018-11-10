@@ -2,10 +2,11 @@ package company.petrifaction.client.adapter.bjcz;
 
 import java.util.Date;
 import java.util.List;
+import java.math.BigDecimal;
 import android.content.Context;
 import java.text.SimpleDateFormat;
-import android.support.annotation.Nullable;
 import company.petrifaction.client.R;
+import android.support.annotation.Nullable;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import company.petrifaction.client.bean.bjcz.BjczPageInfo;
@@ -26,7 +27,7 @@ public class BjczAdapter extends BaseQuickAdapter<BjczPageInfo.ContentBean,BaseV
     {
         helper.setText(R.id.item_mainbjczfragment_fourline_right,bjczInfo.getAlarmNumber() + "");
         helper.addOnClickListener(R.id.item_mainbjczfragment_cancel).addOnClickListener(R.id.item_mainbjczfragment_process);
-        helper.setText(R.id.item_mainbjczfragment_fourline_left,bjczInfo.getAlarmValue() + bjczInfo.getUnit().trim());
+        helper.setText(R.id.item_mainbjczfragment_fourline_left,new BigDecimal(bjczInfo.getAlarmValue()).stripTrailingZeros().toPlainString() + bjczInfo.getUnit().trim());
         helper.setText(R.id.item_mainbjczfragment_twoline_right,null != bjczInfo.getAddress() && !"".equals(bjczInfo.getAddress().trim()) ? bjczInfo.getAddress().trim() : "");
         helper.setText(R.id.item_mainbjczfragment_twoline_left,null != bjczInfo.getSensorName() && !"".equals(bjczInfo.getSensorName().trim()) ? bjczInfo.getSensorName().trim() : "");
         helper.setText(R.id.item_mainbjczfragment_oneline_left,null != bjczInfo.getDepartmentName() && !"".equals(bjczInfo.getDepartmentName().trim()) ? bjczInfo.getDepartmentName().trim() : "");

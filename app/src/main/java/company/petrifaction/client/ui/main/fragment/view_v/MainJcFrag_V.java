@@ -7,7 +7,7 @@ import company.petrifaction.client.bean.ssjc.JcCondition;
 
 public interface MainJcFrag_V extends BaseMvp_View
 {
-    void getFailOfDataInfos();
-    void getSuccessOfDataInfos(List<JcDataInfo> jcDataInfos);
+    void getFailOfDataInfos(boolean isShowProgress);
+    void getSuccessOfDataInfos(boolean isShowProgress,List<JcDataInfo> jcDataInfos);
     void getSuccessOfCondition(JcCondition jcCondition,boolean isNeedDrawableLayout);
 }
