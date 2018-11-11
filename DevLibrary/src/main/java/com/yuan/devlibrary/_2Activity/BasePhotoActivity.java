@@ -98,7 +98,7 @@ public abstract class BasePhotoActivity extends BaseActivity
     {
         super.onCreate(savedInstanceState);
         mIsShowGif = false;
-        mEnableCrop = true;
+        mEnableCrop = false;
         mEnableSound = false;
         mSelectedMedias = null;
         mIsDragCropBox = false;
