@@ -72,7 +72,16 @@ public class BjczAct extends BasePhotoAct implements BjczAct_V,View.OnClickListe
             {
                 if(null != mBjczImgAdapter.getData().get(position) && "".equals(mBjczImgAdapter.getData().get(position).trim()))
                 {
-                    showSelectPicturesDialog(30f, TypedValue.COMPLEX_UNIT_SP,R.color.colorPrimary);
+                    int maxSizePicturesOfGallery = 9 - mBjczImgAdapter.getData().size();
+                    for(int index = 0;index < mBjczImgAdapter.getData().size();index++)
+                    {
+                        if(null != mBjczImgAdapter.getData().get(index) && "".equals(mBjczImgAdapter.getData().get(index)))
+                        {
+                            maxSizePicturesOfGallery++;
+                            break;
+                        }
+                    }
+                    showSelectPicturesDialog(30f, TypedValue.COMPLEX_UNIT_SP,R.color.colorPrimary,maxSizePicturesOfGallery);
                 }
                 else if(null != mBjczImgAdapter.getData().get(position) && !"".equals(mBjczImgAdapter.getData().get(position).trim()))
                 {
@@ -89,7 +98,16 @@ public class BjczAct extends BasePhotoAct implements BjczAct_V,View.OnClickListe
             {
                 if(null != mBjczImgAdapter.getData().get(position) && "".equals(mBjczImgAdapter.getData().get(position).trim()))
                 {
-                    showSelectPicturesDialog(30f, TypedValue.COMPLEX_UNIT_SP,R.color.colorPrimary);
+                    int maxSizePicturesOfGallery = 9 - mBjczImgAdapter.getData().size();
+                    for(int index = 0;index < mBjczImgAdapter.getData().size();index++)
+                    {
+                        if(null != mBjczImgAdapter.getData().get(index) && "".equals(mBjczImgAdapter.getData().get(index)))
+                        {
+                            maxSizePicturesOfGallery++;
+                            break;
+                        }
+                    }
+                    showSelectPicturesDialog(30f, TypedValue.COMPLEX_UNIT_SP,R.color.colorPrimary,maxSizePicturesOfGallery);
                 }
                 else if(null != mBjczImgAdapter.getData().get(position) && !"".equals(mBjczImgAdapter.getData().get(position).trim()))
                 {
@@ -161,9 +179,13 @@ public class BjczAct extends BasePhotoAct implements BjczAct_V,View.OnClickListe
 
     protected void setOnNewImgPathListener(LinkedList<String> bitmapPaths)
     {
-        if(null != bitmapPaths && bitmapPaths.size() > 0 && null != bitmapPaths.get(0) && !"".equals(bitmapPaths.get(0).trim()))
+        if(null != bitmapPaths && bitmapPaths.size() > 0)
         {
-            mBjczImgAdapter.addData(0,bitmapPaths.get(0).trim());
+            for(int index = 0;index < bitmapPaths.size();index++)
+            {
+                if(null != bitmapPaths.get(index) && !"".equals(bitmapPaths.get(index).trim()))
+                    mBjczImgAdapter.addData(0,bitmapPaths.get(index).trim());
+            }
             if(mBjczImgAdapter.getData().size() > 9)
             {
                 for(int index = mBjczImgAdapter.getData().size() - 1;index >= 0;index--)

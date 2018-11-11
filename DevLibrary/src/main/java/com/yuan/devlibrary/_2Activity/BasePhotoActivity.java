@@ -64,6 +64,7 @@ public abstract class BasePhotoActivity extends BaseActivity
     protected boolean mIsCropActionAsy;
     /**用户本次的操作对象是相机还是图库(true相机,false图库)**/
     private boolean mIsUserOperateCamera;
+
     /********************************************************/
     /*******表示用户在读写外置内存权限中缺少的具体权限*******/
     private String mCurrentLackPermission;
@@ -111,7 +112,7 @@ public abstract class BasePhotoActivity extends BaseActivity
         mChoosePicturesMaxSize = Integer.MAX_VALUE;
         mCropShapeStyle = CROP_PICTURES_SHAPE_SQUARE;
         mPicturesSelector = PictureSelector.create(this);
-        mChoosePicturesMode = CHOOSE_PICTURES_MODE_SINGLE;
+        mChoosePicturesMode = CHOOSE_PICTURES_MODE_MULTIPLE;
         mPictureSelectorTheme = R.style.pictureSelector_default_style;
         mPicturesCachePath = MemoryUtils.getBestFilesPath(this) + File.separator + "pictures";
         File cachePathFile = new File(mPicturesCachePath);if(!cachePathFile.exists()) cachePathFile.mkdirs();
@@ -289,7 +290,7 @@ public abstract class BasePhotoActivity extends BaseActivity
      ****************************fontTextSize：描述获取图片方式文字的大小***************************
      **************************fontTextSizeType：描述获取图片方式文字的类型*************************
      *************************fontTextColorRes：描述获取图片方式文字的颜色值***********************/
-    protected void showSelectPicturesDialog(Float fontTextSize,Integer fontTextSizeType,Integer fontTextColorRes)
+    protected void showSelectPicturesDialog(Float fontTextSize,Integer fontTextSizeType,Integer fontTextColorRes,final int maxSizePicturesOfGallery)
     {
         final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
         alertDialog.show();
@@ -318,6 +319,7 @@ public abstract class BasePhotoActivity extends BaseActivity
         {
             public void onClick(View v)
             {
+                mChoosePicturesMaxSize = maxSizePicturesOfGallery;
                 mIsUserOperateCamera = false;
                 alertDialog.dismiss();
                 readyStartGallery();
