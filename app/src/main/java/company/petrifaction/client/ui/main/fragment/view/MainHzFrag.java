@@ -532,7 +532,11 @@ public class MainHzFrag extends BaseFrag implements MainHzFrag_V,View.OnClickLis
     public void setUserVisibleHint(boolean isVisibleToUser)
     {
         super.setUserVisibleHint(isVisibleToUser);
-        if(!isVisibleToUser)
+        if(isVisibleToUser && null != mMainHzPresenter)
+        {
+            mMainHzPresenter.getDatas(mConditionsMap);
+        }
+        else
         {
             System.gc();
         }
