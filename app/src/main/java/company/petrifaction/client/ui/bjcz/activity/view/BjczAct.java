@@ -1,9 +1,9 @@
 package company.petrifaction.client.ui.bjcz.activity.view;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import android.view.View;
+import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import android.widget.Button;
@@ -16,10 +16,10 @@ import company.petrifaction.client.R;
 import android.support.v7.widget.RecyclerView;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.widget.GridLayoutManager;
+import company.petrifaction.client.base.BasePhotoAct;
 import android.support.v7.widget.LinearLayoutManager;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.yuan.devlibrary._12_______Utils.PromptBoxUtils;
-import company.petrifaction.client.base.BasePhotoAct;
 import company.petrifaction.client.bean.bjcz.BjczUploadImgInfo;
 import company.petrifaction.client.adapter.bjcz.BjczImgAdapter;
 import company.petrifaction.client.ui.bjcz.activity.view_v.BjczAct_V;
